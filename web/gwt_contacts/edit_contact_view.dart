@@ -12,6 +12,11 @@ class EditContactView extends PolymerElement {
   
   EditContactView.created() : super.created();
   
+  enteredView() {
+    super.enteredView();
+    _originalContact = new Contact.copy(contact);
+  }
+
   static const EventStreamProvider<CustomEvent> _READY_EVENT = const EventStreamProvider("ready");
   Stream<CustomEvent> get onReady => _READY_EVENT.forTarget(this);
   static void _dispatchReadyEvent(Element element, bool canceled) {
