@@ -5,15 +5,13 @@
     <!-- you have to import the HTML file that contains the custom element -->
     <link rel="import" href="packages/dart_polymer_examples/a_element.html">
     <link rel="import" href="packages/dart_polymer_examples/b_element.html">
-    
+
+    <script type="application/dart" src="index.dart"></script>    
     <script src="packages/browser/dart.js"></script>
   </head>
   <body>
     <!-- you must close custom elements -->
     <a-element id="a"></a-element>
     <b-element id="b"></b-element>
-
-    <!-- Move this into head and the sample will break. -->
-    <script type="application/dart" src="index.dart"></script>
   </body>
 </html>
