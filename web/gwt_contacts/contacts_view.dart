@@ -32,7 +32,7 @@ class ContactsView extends PolymerElement {
     selectedContact = contacts.firstWhere((Contact contact) => contact.id == id);
   }
   
-  void editReady(CustomEvent event, bool canceled) {
+  void editDone(CustomEvent event, bool canceled) {
     if (canceled && selectedContact.isEmpty) {
       contacts.remove(selectedContact);
     }
