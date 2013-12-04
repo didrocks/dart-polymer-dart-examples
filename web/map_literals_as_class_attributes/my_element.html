@@ -2,6 +2,7 @@
 
 <polymer-element name="my-element">
   <template>
+    <!-- This doesn't work, see https://code.google.com/p/dart/issues/detail?id=12660 -->
     <div class="{{ {'rainbow': favoriteColors.length > 1, 'has-company': company, 'has-name': firstName} }}">
       Map-literal bindings result in a space-separated list of labels
       for truthy expressions.
