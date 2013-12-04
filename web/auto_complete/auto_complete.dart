@@ -24,6 +24,8 @@ class AutoCompleteElement extends PolymerElement {
     onPropertyChange(this, #search, _performSearch);
   }
 
+  bool _hasResults() => results.length != 0;
+
   void select(Event e, var detail, Node target) {
     search = target.text;
     _reset();
@@ -36,7 +38,10 @@ class AutoCompleteElement extends PolymerElement {
       return;
     }
     results.clear();
-    if (search.trim().isEmpty) return;
+    if (search.trim().isEmpty) {
+      _reset();
+      return;
+    }
     String lower = search.toLowerCase();
     results.addAll(haystack.where((String term) {
       return term.toLowerCase().startsWith(lower);
@@ -61,6 +66,7 @@ class AutoCompleteElement extends PolymerElement {
   }
 
   _moveDown() {
+    if (!_hasResults()) return;
     List<Element> lis = shadowRoot.querySelectorAll('ul li');
     if (keyboardSelect >= 0) lis[keyboardSelect].classes.remove('selecting');
     keyboardSelect = ++keyboardSelect == lis.length ? 0 : keyboardSelect;
@@ -68,6 +74,7 @@ class AutoCompleteElement extends PolymerElement {
   }
 
   _moveUp() {
+    if (!_hasResults()) return;
     List<Element> lis = shadowRoot.querySelectorAll('ul li');
     if (keyboardSelect >= 0) lis[keyboardSelect].classes.remove('selecting');
     if (keyboardSelect == -1) keyboardSelect = lis.length;
@@ -82,6 +89,7 @@ class AutoCompleteElement extends PolymerElement {
   }
 
   _select() {
+    if (!_hasResults()) return;
     List<Element> lis = shadowRoot.querySelectorAll('ul li');
     search = lis[keyboardSelect].text;
     skipSearch = true;
@@ -92,4 +100,5 @@ class AutoCompleteElement extends PolymerElement {
     keyboardSelect = -1;
     results.clear();
   }
+
 }
