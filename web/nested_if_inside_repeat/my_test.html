@@ -7,12 +7,9 @@
       <template repeat="{{fruit in fruits}}">
         <li is="my-nested" fruit="{{fruit}}"></li>
         
-        <!-- BUG: https://code.google.com/p/dart/issues/detail?id=14700 -->
-        <!--
         <template if="{{ fruit.length <= 5 }}">
-          <li>Short name: [{{fruit}}]</li>
+          <li>Short name (from MyTest): [{{fruit}}]</li>
         </template>
-        -->
       </template>
     </ul>
   </template>
