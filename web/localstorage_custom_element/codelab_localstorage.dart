@@ -18,7 +18,6 @@ class CodelabLocalstorage extends PolymerElement {
     }
   }
   
-  // TODO: the name of this method will change to enteredView at some point.
   @override
   void enteredView() {
     super.enteredView();
